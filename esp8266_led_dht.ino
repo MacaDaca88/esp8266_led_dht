@@ -59,7 +59,7 @@ void loop()
   Blynk.run();
   timer.run();
 
-  if (discoMode && (millis() - discoModeTimeout <= 60000)) {
+  if (discoMode && (millis() - discoModeTimeout <= 86400000)) {
     discoEffect(strip1, discoSpeed);
     discoEffect(strip2, discoSpeed);
   }
@@ -137,7 +137,14 @@ BLYNK_WRITE(V2)  // Button widget on V2
     digitalWrite(led, LOW); // Turn off the LED
     terminal.println("Disco mode activated for 60 seconds!");
     terminal.flush();
+  }else if (param.asInt()==0){
+    discoMode = false;
+        Blynk.virtualWrite(V9, discoMode); // Sync disco mode with the app
+
+    terminal.println("Disco mode OFF");
+    terminal.flush();
   }
+
 }
 
 void setColor(Adafruit_NeoPixel& strip, uint8_t r, uint8_t g, uint8_t b)

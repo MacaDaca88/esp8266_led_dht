@@ -3,7 +3,6 @@
 #define BLYNK_TEMPLATE_ID "TMPL2tR6ZJyMn"
 #define BLYNK_TEMPLATE_NAME "temperature and humidity"
 
-#include <ESP8266WiFi.h>
 #include <BlynkSimpleEsp8266.h>
 #include <Adafruit_NeoPixel.h>
 #include <DHT.h>
@@ -179,9 +178,9 @@ void discoEffect(Adafruit_NeoPixel& strip, int speed) {
 
     for (int i = 0; i < strip.numPixels(); i++) {
       strip.setPixelColor(i, Wheel(strip, (i + colorIndex) & 255));
-      strip.show();
     }
   }
+  strip.show();
 }
 
 uint32_t Wheel(Adafruit_NeoPixel& strip, byte WheelPos) {

@@ -43,7 +43,7 @@ void setup() {
   OTAinit();
 
   Blynk.begin(auth, ssid, pass);
-
+h
   dht.begin();
   timer.setInterval(1000L, sendSensor);
 
@@ -217,7 +217,7 @@ void sendSensor() {
   terminal.println(" %");
   terminal.flush();
 
-  if (t >= 30) {
+  if (t >= 25) {
     digitalWrite(led, HIGH);
     Blynk.virtualWrite(V4, HIGH);
   } else {

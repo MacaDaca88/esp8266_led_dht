@@ -27,8 +27,8 @@ char pass[] = "PASSWORD1234LOL";
 DHT dht(DHTPIN, DHTTYPE);
 BlynkTimer timer;
 
-Adafruit_NeoPixel strip1(87, D5, NEO_GRB + NEO_KHZ800);   // Strip with 8 LEDs
-Adafruit_NeoPixel strip2(151, D6, NEO_GRB + NEO_KHZ800);  // Strip with 151 LEDs
+Adafruit_NeoPixel strip1(120, D5, NEO_GRB + NEO_KHZ800);   // Strip with 8 LEDs
+Adafruit_NeoPixel strip2(120, D6, NEO_GRB + NEO_KHZ800);  // Strip with 151 LEDs
 
 WidgetTerminal terminal(V3);  // Terminal widget on V3
 WidgetLED alarmLed(V4);       // LED widget for the alarm on V4
@@ -43,7 +43,7 @@ void setup() {
   OTAinit();
 
   Blynk.begin(auth, ssid, pass);
-h
+
   dht.begin();
   timer.setInterval(1000L, sendSensor);
 
@@ -69,7 +69,7 @@ void loop() {
   Blynk.run();
   timer.run();
 
-  if (discoMode && (millis() - discoModeTimeout <= 86400000)) {
+  if (discoMode ) {
     discoEffect(strip1, discoSpeed);
     discoEffect(strip2, discoSpeed);
   }
